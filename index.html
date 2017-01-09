@@ -6,37 +6,48 @@
 <body onload="do_game()">
 	<script type="text/javascript">
 		var color_list=['aqua','black','cyan','gold','green','gray','magenta','orange','red','white','yellow'];
+		var guess_color="";
+		var target;
+		var guess;
+		var number;
+		var number_random;
+		var length;
+
 		function do_game(){
-			var length=color_list.length;
-			var number=Math.random() * (length-0);
-			var target=color_list[number];
+			
+			length=color_list.length;
+			number_random=Math.random() * (length-0);
+			number=Math.floor(number_random);
+			target=color_list[number];
 			var finished=false;
-			var guess=0;
+			guess=0;
 			while(!finished){
-				var guess_color=prompt("Please choose a color");
+				guess_color=prompt("Please choose a color");
 				guess+=1;
 				finished=check_guess();
 			}
 		}	
+
 		function check_guess(){
+			
 			if(color_list.indexOf(guess_color)==-1){
 				alert("You entered an invalid color");
 				return false;
 			}
 
 			if(guess_color>target){
-				alert("Your guess is alphabeitcally higher");
+				alert("Your guess is alphabetically higher");
 				return false;
 			}
 
 			if(guess_color<target){
-				alert("Your guess is alphabeitcally lower");
+				alert("Your guess is alphabetically lower");
 				return false;
 			}
 
+			
+			alert("You entered the correct color \n " + " The correct color is " + target + "\n \n It took you " + guess + "guesses to get it right");
 			return true;
-
-			alert("You entered the correct color \n " + " The correct color is " + target + "\n \n It took you " + guess + "guesses to get it right")
 		}	
 	</script>
 </body>
