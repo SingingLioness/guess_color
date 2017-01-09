@@ -3,21 +3,23 @@
 <head>
 	<title>Color guessing game</title>
 </head>
-<body>
-	<script>
+<body onload="do_game()">
+	<script type="text/javascript">
 		var color_list=['aqua','black','cyan','gold','green','gray','magenta','orange','red','white','yellow'];
 		function do_game(){
-			var length=color_list.length();
+			var length=color_list.length;
 			var number=Math.random() * (length-0);
 			var target=color_list[number];
 			var finished=false;
+			var guess=0;
 			while(!finished){
 				var guess_color=prompt("Please choose a color");
 				guess+=1;
 				finished=check_guess();
 			}
+		}	
 		function check_guess(){
-			if(indexof(guess_color)==-1){
+			if(color_list.indexOf(guess_color)==-1){
 				alert("You entered an invalid color");
 				return false;
 			}
@@ -35,10 +37,7 @@
 			return true;
 
 			alert("You entered the correct color \n " + " The correct color is " + target + "\n \n It took you " + guess + "guesses to get it right")
-			
-		}
-		
-		do_game();
+		}	
 	</script>
 </body>
 </html>
